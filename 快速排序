@@ -1,0 +1,34 @@
+#include<iostream>
+using namespace std;
+
+void quick_sort(int low,int high,int a[])
+{
+	if (low >= high) return;
+	int i = low;
+	int j = high;
+	int s = a[(low + high + 1) / 2];
+	while (i < j)
+	{
+		while (a[i] < s) i++;
+		while (s < a[j]) j--;
+		if (i < j)
+		{
+			swap(a[i], a[j]);
+		}
+			
+	}
+	quick_sort(low, i - 1, a);
+	quick_sort(i, high, a);
+}
+
+int main()
+{
+	int ax[10];
+	int n = 0;
+	cin >> n;
+	for (int i = 0; i < n; i++)
+		cin >> ax[i];
+	quick_sort(0, n - 1, ax);
+	for (int i = 0; i < n; i++)
+		cout << ax[i] << " ";
+}
